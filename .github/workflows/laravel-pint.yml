@@ -36,5 +36,5 @@ jobs:
           git config --global user.name "Amon Gathoka"
           git config --global user.email "waitaamon@gmail.com"
           git add .
-          git commit -m "laravel pint"
+          git commit -m "laravel pint" || exit 0
           git push
