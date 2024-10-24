@@ -7,6 +7,10 @@ on:
 jobs:
   no-plans-to-merge:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == false
+    permissions:
+      pull-requests: write
+      issues: write
 
     steps:
       - name: Create a comment on the PR
