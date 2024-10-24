@@ -24,6 +24,11 @@ jobs:
         run : composer global require laravel/pint
 
       - name: Run Pint
-        run: pint --test
+        run: pint
       - name: Push changes back to repo
-        run: echo "TODO"
+        run: |
+          git config --global user.email "gh-actions"
+          git config --global user.email "gh@laracast.com"
+          git add .
+          git commit -m "laravel pint"
+          git push
