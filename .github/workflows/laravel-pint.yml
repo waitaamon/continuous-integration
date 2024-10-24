@@ -27,8 +27,8 @@ jobs:
         run: pint
       - name: Push changes back to repo
         run: |
-          git config --global user.email "gh-actions"
-          git config --global user.email "gh@laracast.com"
+          git config --global user.email "Amon Waita"
+          git config --global user.email "waitaaamon@gmail.com"
           git add .
           git commit -m "laravel pint"
           git push
