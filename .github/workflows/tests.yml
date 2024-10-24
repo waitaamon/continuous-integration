@@ -12,6 +12,13 @@ jobs:
         image: redis:7.4
         ports:
           - 6379:6379
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_DATABASE: lab
+        ports:
+          - 3306:3306
 
     steps:
       - name: Checkout Code
