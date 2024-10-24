@@ -7,6 +7,7 @@ on:
 jobs:
   no-plans-to-merge:
     runs-on: ubuntu-latest
+    permissions: write-all
 
     steps:
       - name: Create a comment on the PR
