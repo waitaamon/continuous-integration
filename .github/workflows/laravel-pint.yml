@@ -1,0 +1,43 @@
+name: Laravel Pint
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  laravel-pint:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    permissions:
+      pull-requests: write
+      issues: write
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+            ref: ${{ github.head_ref }}
+
+      - name: Setup PHP and Composer
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
+
+      - name: Install Laravel Pint
+        run : composer global require laravel/pint
+
+      - name: Run Pint
+        run: pint
+
+      - name: Push changes back to repo
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "Amon Gathoka"
+          git config --global user.email "waitaamon@gmail.com"
+          git add .
+          git commit -m "laravel pint" || exit 0
+          git push
