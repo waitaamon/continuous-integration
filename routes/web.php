@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     Redis::incr('landing-page-views');
 
-    $seed = Session::remember('users.seed', fn() => rand(1, 100));
+    $seed = Session::remember('users.seed', fn () => rand(1, 100));
 
     return view('welcome', [
         'users' => User::inRandomOrder($seed)->paginate(3),
