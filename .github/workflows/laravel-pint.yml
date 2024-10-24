@@ -2,10 +2,13 @@ name: Laravel Pint
 
 on:
   pull_request:
+    types:
+      - closed
 
 jobs:
   laravel-pint:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
     permissions:
       pull-requests: write
       issues: write
